@@ -11,12 +11,14 @@ const Register = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // context
-  const [setState] = useContext(UserContext);
+  const [,setState] = useContext(UserContext);
 
   const handleClick = async (e) => {
+    // console.log(name, email, password);
+    e.preventDefault();
     try {
-      e.preventDefault();
-      const { data } = await axios.post("http://localhost:8000/api/register", {
+      
+      const { data } = await axios.post("/register", {
         name,
         email,
         password,

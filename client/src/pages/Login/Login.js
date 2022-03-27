@@ -1,22 +1,21 @@
 import React, { useState, useContext } from "react";
-import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { UserContext } from "../../context";
-
+import Input from "../../components/Input/Input";
+import Button from "../../components/Button/Button";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // context
-  const [setState] = useContext(UserContext);
+  const [, setState] = useContext(UserContext);
 
   const handleClick = async (e) => {
     // console.log("email and password", email, password);
     try {
       e.preventDefault();
-      const { data } = await axios.post("http://localhost:8000/api/login", {
+      const { data } = await axios.post("/login", {
         email,
         password,
       });
